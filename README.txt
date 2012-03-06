@@ -2,6 +2,7 @@ ProcessWire DataTable 1.0.0
 ============================
 
 This module enables you to find and edit (fancybox modal iframe) pages at a small and very large scale. 
+
 So far it has:
 
 - ajax suuport

@@ -51,7 +51,7 @@ class ProcessDataTable extends Process {
 			'title' => 'DataTable',
 			'summary' => 'Ajax driven data-table for pages. Adds "DataTable" page in ProcessWire admin.',
 			'version' => 100,
-			'href' => 'http://processwire.com/talk/index.php/topic,766.0.html',
+			'href' => 'http://processwire.com/talk/topic/704-datatable/',
 			'permission' => 'page-edit'
 		);
 	}
