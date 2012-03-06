@@ -102,8 +102,6 @@ class ProcessDataTable extends Process {
 		$form->method = 'get';
 		$form->action = './';
 
-		$fieldset = $this->modules->get("InputfieldFieldset"); 
-		$fieldset->label = "Filters";
 
 		// generating the template select, we only list templates the user has edit access
 		// ---------------------------------------------------------------------------------
@@ -135,15 +133,12 @@ class ProcessDataTable extends Process {
 		// if template was selected previously we set it to not collapse
 		if($this->session->templatefilter) {
 			$field->collapsed = Inputfield::collapsedNo;
-			$fieldset->collapsed = Inputfield::collapsedNo; 
 		} else {
 			$field->collapsed = Inputfield::collapsedYes;
-			$fieldset->collapsed = Inputfield::collapsedYes;
 		}
 
 		// add select to fieldset wrapper and from wrapper
-		$fieldset->add($field);
-		$form->add($fieldset);
+		$form->add($field);
 
 		// constructing default empty html markup table output
 		// ---------------------------------------------------------------------------------
@@ -207,6 +202,7 @@ _END;
 
 		$admin_url = $this->config->urls->admin;
 		$template = '';
+		$is_superuser = $this->user->isSuperuser();
 
 		// if filter template set
 		if(isset($this->input->get->filter_template) && $this->input->get->filter_template != '') {
@@ -218,10 +214,10 @@ _END;
 		}
 
 		// extend selector string with access options
-		$selector = "{$template}include=all,check_access=1,";
+		$selector = "{$template}include=all,";
 
-		// if not superuser exclude admin pages
-		if(!$this->user->isSuperuser()) $selector .= "has_parent!=2,id!=2,";
+		// if not superuser exclude admin pages and trash page
+		if(!$is_superuser) $selector .= "template!=admin,has_parent!=2,id!=2|7,";
 
 		if( $this->input->get->sSearch ) {
 			$q = $this->sanitizer->text($this->input->get->sSearch);
@@ -284,9 +280,9 @@ _END;
 
 			// path with url to open in tree
 			$sOutput .= '"';
-			if($viewable) $sOutput .= '<a href=\"'.$admin_url.'page/?open='.$p->id.'\">';
+			if(!$p->isTrash() || $is_superuser) $sOutput .= '<a href=\"'.$admin_url.'page/?open='.$p->id.'\">';
 			$sOutput .= $p->url;
-			if($viewable) $sOutput .= '</a>';
+			if(!$p->isTrash() || $is_superuser) $sOutput .= '</a>';
 			$sOutput .= '",';
 
 			// date modified
