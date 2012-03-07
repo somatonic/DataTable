@@ -73,6 +73,7 @@ class ProcessDataTable extends Process {
 		$this->config->styles->append( $this->config->urls->ProcessDataTable . "js/fancybox/jquery.fancybox.css" );
 		$this->config->scripts->append( $this->config->urls->ProcessDataTable . "js/dataTables/jquery.dataTables.min.js" );
 		$this->config->scripts->append( $this->config->urls->ProcessDataTable . "js/fancybox/jquery.fancybox.pack.js" );
+		$this->config->scripts->append( $this->config->urls->ProcessDataTable . "DataTable.js" );
 		
 		// multilanguage support so it can be translated, string as used in DataTable js
 		// ---------------------------------------------------------------------------------
