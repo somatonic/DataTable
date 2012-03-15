@@ -5,7 +5,7 @@ This module enables you to find and edit (fancybox modal iframe) pages at a smal
 
 So far it has:
 
-- ajax suuport
+- ajax support
 - masked pagination
 - state saving (datatable using cookie, template filter using session)
 - template filter (only showing templates user has edit access)
@@ -28,7 +28,7 @@ I've chosen it, because I used in in some other web projects and was really happ
 How to install:
 =============================
 
-- Download the contents of this repository and put the folder renamed as "PageEditSoftLock" into your site/modules/ folder
-- Login to processwire and got to Modules page and click "Check for new modules". You should see a note that two new modules were found. Install the "Page Edit Soft Lock" module only, the Process Page Edit Soft Lock module gets installed and uninstalled automatic.
+- Download the contents of this repository and put the folder renamed as "DataTable" into your site/modules/ folder
+- Login to processwire and got to Modules page and click "Check for new modules". You should see a note that the new module were found. Install it.
 - A new admin page "DataTable" should appear
 - Done
